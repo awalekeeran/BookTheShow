@@ -1,0 +1,324 @@
+# ============================================
+# BookTheShow - Git Ignore File
+# ============================================
+
+# =========================
+# .NET / C# Build Outputs
+# =========================
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/launchSettings.json
+
+# =========================
+# Visual Studio
+# =========================
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Visual Studio cache files
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Visual Studio Trace Files
+*.e2e
+
+# =========================
+# JetBrains Rider
+# =========================
+.idea/
+*.sln.iml
+*.idea.meta
+
+# =========================
+# VS Code
+# =========================
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.history/
+*.vsix
+
+# =========================
+# NuGet
+# =========================
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+!**/[Pp]ackages/repositories.config
+*.nuget.props
+*.nuget.targets
+.nuget/
+nuget.exe
+
+# =========================
+# Test Results
+# =========================
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+*.trx
+*.coverage
+*.coveragexml
+coverage/
+coveragereport/
+*.opencover.xml
+
+# =========================
+# NCrunch
+# =========================
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+*.ncrunch*
+
+# =========================
+# Resharper
+# =========================
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# =========================
+# TeamCity
+# =========================
+_TeamCity*
+
+# =========================
+# Code Coverage
+# =========================
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+lcov.info
+
+# =========================
+# Publish Output
+# =========================
+publish/
+PublishOutput/
+[Pp]ublish/
+
+# =========================
+# Node.js / React Frontend
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log*
+
+# Build output
+dist/
+dist-ssr/
+build/
+*.local
+
+# Vite
+.vite/
+
+# TypeScript
+*.tsbuildinfo
+
+# =========================
+# Environment Files
+# =========================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# Sensitive appsettings (keep templates)
+appsettings.Production.json
+appsettings.Staging.json
+**/secrets.json
+
+# =========================
+# Docker
+# =========================
+docker-compose.override.yml
+.docker/
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# Database
+# =========================
+*.mdf
+*.ldf
+*.ndf
+*.db
+*.sqlite
+
+# =========================
+# Secrets & Certificates
+# =========================
+secrets/
+*.pfx
+*.key
+*.pem
+*.cer
+*.crt
+*.p12
+
+# =========================
+# OS Generated Files
+# =========================
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =========================
+# Temporary Files
+# =========================
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# =========================
+# Backup Files
+# =========================
+*.bak
+*.backup
+*.orig
+
+# =========================
+# Azure
+# =========================
+.azure/
+azure.json
+
+# =========================
+# Terraform (if used)
+# =========================
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# =========================
+# Misc
+# =========================
+*.DotSettings
+StyleCop.Cache
+~$*
+BenchmarkDotNet.Artifacts/
+project.lock.json
