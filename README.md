@@ -384,31 +384,11 @@ This project tackles those **exact challenges** while teaching you:
 
 ---
 
-## 📺 Content Creator Guide
-
-This project is designed for creating educational content:
-
-### YouTube Series Plan
-- **Series 1**: Project Introduction (4 videos)
-- **Series 2**: Design Patterns Deep Dive (15-20 videos)
-- **Series 3**: System Design Deep Dives (10-12 videos)
-- **Series 4**: Frontend Development (8-10 videos)
-- **Series 5**: Interview Preparation (5-6 videos)
-
-### Instagram Reels
-- Quick tips on design patterns
-- System design concepts in 60 seconds
-- Code snippet walkthroughs
-
-📖 **Full Guide**: [Content Creator Roadmap](docs/CONTENT-CREATOR-ROADMAP.md)
-
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 - [Node.js 18+](https://nodejs.org/)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) or [VS Code](https://code.visualstudio.com/)
