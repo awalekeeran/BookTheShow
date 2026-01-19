@@ -36,7 +36,6 @@ This project tackles those **exact challenges** while teaching you:
 - [Design Patterns Used](#-design-patterns-used)
 - [System Design Concepts](#-system-design-concepts)
 - [Documentation](#-documentation)
-- [Content Creator Guide](#-content-creator-guide)
 - [Getting Started](#-getting-started)
 - [Milestones](#-milestones)
 
