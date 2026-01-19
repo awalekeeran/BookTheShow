@@ -7,9 +7,8 @@
     <PackageVersion Include="AutoMapper" Version="16.0.0" />
     <PackageVersion Include="MassTransit" Version="9.0.0" />
     <PackageVersion Include="MediatR" Version="14.0.0" />
-      <PackageVersion Include="MediatR.Contracts" Version="2.0.1" />
+    <PackageVersion Include="MediatR.Contracts" Version="2.0.1" />
     <PackageVersion Include="FluentValidation" Version="12.1.1" />
-      <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <!-- ... more packages ... -->
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.2" />
@@ -20,6 +19,6 @@
     <PackageVersion Include="RabbitMQ.Client" Version="7.2.0" />
     <PackageVersion Include="RedLock.net" Version="2.3.2" />
     <PackageVersion Include="StackExchange.Redis" Version="2.10.1" />
-
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.1.0" />
   </ItemGroup>
 </Project>
