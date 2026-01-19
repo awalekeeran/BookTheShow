@@ -162,7 +162,7 @@ This project tackles those **exact challenges** while teaching you:
 ### Backend
 | Technology | Purpose |
 |------------|---------|
-| **.NET 8** | Backend framework |
+| **.NET 10** | Backend framework |
 | **ASP.NET Core Web API** | RESTful APIs |
 | **Entity Framework Core** | ORM |
 | **MediatR** | CQRS & Mediator pattern |
