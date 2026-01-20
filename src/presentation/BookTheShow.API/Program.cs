@@ -1,13 +1,37 @@
-
 using Microsoft.OpenApi;
+using Serilog;
+using Serilog.Events;
 
-var builder = WebApplication.CreateBuilder(args);
+// 🔹 Configure Serilog EARLY (before building the host)
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .CreateBootstrapLogger(); // Bootstrap logger for startup errors
 
-// Add services to the container.
+try
+{
+    Log.Information("🚀 Starting BookTheShow API...");
 
-// 1️⃣ Swagger/OpenAPI Configuration
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
+    var builder = WebApplication.CreateBuilder(args);
+
+    // 🔹 Replace default logging with Serilog
+    builder.Host.UseSerilog((context, services, configuration) => configuration
+        .ReadFrom.Configuration(context.Configuration)
+        .ReadFrom.Services(services)
+        .Enrich.FromLogContext()
+        .Enrich.WithMachineName()
+        .Enrich.WithThreadId()
+        .Enrich.WithProcessId()
+        .Enrich.WithEnvironmentName()
+        .Enrich.WithProperty("Application", "BookTheShow.API")
+    );
+
+    // Add services to the container.
+
+    // 1️⃣ Swagger/OpenAPI Configuration
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
@@ -57,6 +81,25 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+// 🔹 Serilog Request Logging (MUST be first middleware)
+app.UseSerilogRequestLogging(options =>
+{
+    options.MessageTemplate = "HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms";
+    options.GetLevel = (httpContext, elapsed, ex) => ex != null
+        ? LogEventLevel.Error
+        : elapsed > 1000
+            ? LogEventLevel.Warning
+            : LogEventLevel.Information;
+    options.EnrichDiagnosticContext = (diagnosticContext, httpContext) =>
+    {
+        diagnosticContext.Set("RequestHost", httpContext.Request.Host.Value);
+        diagnosticContext.Set("RequestScheme", httpContext.Request.Scheme);
+        diagnosticContext.Set("UserAgent", httpContext.Request.Headers["User-Agent"].ToString());
+        diagnosticContext.Set("ClientIP", httpContext.Connection.RemoteIpAddress?.ToString());
+    };
+});
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -69,6 +112,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Sample endpoint
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -76,6 +120,7 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", () =>
 {
+    Log.Information("Weather forecast requested");
     var forecast =  Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
@@ -88,7 +133,18 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
-app.Run();
+    Log.Information("✅ BookTheShow API started successfully");
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "❌ Application terminated unexpectedly");
+}
+finally
+{
+    Log.Information("🛑 Shutting down BookTheShow API");
+    await Log.CloseAndFlushAsync();
+}
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
