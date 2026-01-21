@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- Define all package versions centrally -->
+	<PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.2" />
     <PackageVersion Include="AutoMapper" Version="16.0.0" />
     <PackageVersion Include="MassTransit" Version="9.0.0" />
     <PackageVersion Include="MediatR" Version="14.0.0" />
