@@ -1,10 +1,12 @@
-using System;
 using System.Collections.Generic;
-using System.Text;
+using BookTheShow.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace BookTheShow.Application.Common.Interfaces
+namespace BookTheShow.Application.Common.Interfaces;
+
+public interface IApplicationDbContext
 {
-    internal class IApplicationDbContext
-    {
-    }
+    DbSet<User> Users { get; }
+
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
