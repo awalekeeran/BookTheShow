@@ -1,10 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using BookTheShow.Application.Common.Models;
+using BookTheShow.Application.Users.DTOs;
+using MediatR;
 
-namespace BookTheShow.Application.Users.Commands.CreateUser
+namespace BookTheShow.Application.Users.Commands.CreateUser;
+
+public record CreateUserCommand : IRequest<Result<UserDto>>
 {
-    internal class CreateUserCommand
-    {
-    }
+    public string FirstName { get; init; } = string.Empty;
+    public string LastName { get; init; } = string.Empty;
+    public string Email { get; init; } = string.Empty;
+    public string PhoneNumber { get; init; } = string.Empty;
+    public string Password { get; init; } = string.Empty;
+    public DateTime DateOfBirth { get; init; }
+    public string Role { get; init; } = "Customer";
 }
