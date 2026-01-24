@@ -35,8 +35,17 @@ try
         .Enrich.WithProperty("Application", "BookTheShow.API")
     );
 
-    // Add services to the container.
 
+    // Add DbContext
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+
+    builder.Services.AddScoped<IApplicationDbContext>(provider =>
+        provider.GetRequiredService<ApplicationDbContext>());
+
+    
     // 1️⃣ Swagger/OpenAPI Configuration
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen(options =>
