@@ -1,10 +1,3 @@
-using BookTheShow.Application.Common.Interfaces;
-using BookTheShow.Application.Common.Models;
-using BookTheShow.Application.Users.DTOs;
-using BookTheShow.Domain.Entities;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-
 namespace BookTheShow.Application.Users.Queries.GetUsers;
 
 public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, Result<List<UserDto>>>

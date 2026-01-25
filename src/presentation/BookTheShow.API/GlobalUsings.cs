@@ -1,0 +1,15 @@
+global using BookTheShow.API;
+global using BookTheShow.Application.Common.Interfaces;
+global using BookTheShow.Application.Users.Commands.CreateUser;
+global using BookTheShow.Application.Users.Commands.DeleteUser;
+global using BookTheShow.Application.Users.Commands.UpdateUser;
+global using BookTheShow.Application.Users.Queries.GetUserById;
+global using BookTheShow.Application.Users.Queries.GetUsers;
+global using BookTheShow.Infrastructure.Persistence;
+global using FluentValidation;
+global using MediatR;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.OpenApi;
+global using Serilog;
+global using Serilog.Events;

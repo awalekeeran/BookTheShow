@@ -1,7 +1,3 @@
-﻿using BookTheShow.Application.Common.Interfaces;
-using BookTheShow.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-
 namespace BookTheShow.Infrastructure.Persistence;
 
 public class ApplicationDbContext : DbContext, IApplicationDbContext

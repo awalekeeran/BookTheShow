@@ -1,8 +1,3 @@
-using BookTheShow.Application.Common.Interfaces;
-using BookTheShow.Application.Common.Models;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-
 namespace BookTheShow.Application.Users.Commands.DeleteUser;
 
 public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, Result>

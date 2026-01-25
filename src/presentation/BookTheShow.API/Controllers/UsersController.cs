@@ -1,11 +1,3 @@
-using BookTheShow.Application.Users.Commands.CreateUser;
-using BookTheShow.Application.Users.Commands.DeleteUser;
-using BookTheShow.Application.Users.Commands.UpdateUser;
-using BookTheShow.Application.Users.Queries.GetUserById;
-using BookTheShow.Application.Users.Queries.GetUsers;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-
 namespace BookTheShow.API.Controllers;
 
 [ApiController]

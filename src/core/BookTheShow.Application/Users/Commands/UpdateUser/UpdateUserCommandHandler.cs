@@ -1,9 +1,3 @@
-using BookTheShow.Application.Common.Interfaces;
-using BookTheShow.Application.Common.Models;
-using BookTheShow.Application.Users.DTOs;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-
 namespace BookTheShow.Application.Users.Commands.UpdateUser;
 
 public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Result<UserDto>>

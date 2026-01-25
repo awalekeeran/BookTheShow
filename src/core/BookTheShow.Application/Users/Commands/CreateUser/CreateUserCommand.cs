@@ -1,7 +1,3 @@
-﻿using BookTheShow.Application.Common.Models;
-using BookTheShow.Application.Users.DTOs;
-using MediatR;
-
 namespace BookTheShow.Application.Users.Commands.CreateUser;
 
 public record CreateUserCommand : IRequest<Result<UserDto>>

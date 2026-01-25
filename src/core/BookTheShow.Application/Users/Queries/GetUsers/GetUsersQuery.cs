@@ -1,7 +1,3 @@
-using BookTheShow.Application.Common.Models;
-using BookTheShow.Application.Users.DTOs;
-using MediatR;
-
 namespace BookTheShow.Application.Users.Queries.GetUsers;
 
 public record GetUsersQuery : IRequest<Result<List<UserDto>>>

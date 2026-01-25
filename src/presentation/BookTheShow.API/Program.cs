@@ -1,7 +1,3 @@
-using BookTheShow.API;
-using Microsoft.OpenApi;
-using Serilog;
-using Serilog.Events;
 
 // 🔹 Configure Serilog EARLY (before building the host)
 Log.Logger = new LoggerConfiguration()
