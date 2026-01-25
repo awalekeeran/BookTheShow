@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using BookTheShow.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-
 namespace BookTheShow.Application.Common.Interfaces;
 
 public interface IApplicationDbContext

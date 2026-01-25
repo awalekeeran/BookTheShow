@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace BookTheShow.Application.Users.Commands.UpdateUser;
 
 public class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>

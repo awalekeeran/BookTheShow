@@ -1,5 +1,3 @@
-using BookTheShow.Domain.Common;
-
 namespace BookTheShow.Domain.Entities;
 
 public class User : BaseEntity
