@@ -1,4 +1,4 @@
-# BookTheShow 🎬🎭🎫
+# BookTheShow 🎬🎭
 
 > A comprehensive movie & event ticket booking platform built for learning **System Design**, **OOAD**, and **Design Patterns** — inspired by **BookMyShow** and the **Ticketmaster** case study.
 
