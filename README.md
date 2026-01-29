@@ -856,58 +856,6 @@ cd src/Frontend/book-the-show-web
 npm install
 npm run dev
 ```
-
----
-
-## 🎯 Milestones
-
-### Milestone 1: Project Foundation ✅
-- [x] Initialize repository
-- [ ] Setup solution structure
-- [ ] Configure CI/CD pipeline
-- [ ] Setup development environment
-
-### Milestone 2: Core Domain
-- [ ] Domain models & entities
-- [ ] Database schema & migrations
-- [ ] Repository implementations
-- [ ] Unit tests for domain
-
-### Milestone 3: Authentication & User Management
-- [ ] JWT authentication
-- [ ] User registration/login
-- [ ] Role-based authorization
-- [ ] Profile management
-
-### Milestone 4: Catalog Features
-- [ ] Movie management APIs
-- [ ] Theater & screen management
-- [ ] Show scheduling
-- [ ] Search functionality
-
-### Milestone 5: Booking System
-- [ ] Seat selection
-- [ ] Booking workflow
-- [ ] Concurrency handling
-- [ ] Price calculation
-
-### Milestone 6: Payment Integration
-- [ ] Payment gateway integration
-- [ ] Transaction management
-- [ ] Refund processing
-
-### Milestone 7: Frontend Development
-- [ ] React app setup
-- [ ] Authentication UI
-- [ ] Movie browsing
-- [ ] Booking flow UI
-
-### Milestone 8: Advanced Features
-- [ ] Caching implementation
-- [ ] Elasticsearch integration
-- [ ] Notification system
-- [ ] Analytics dashboard
-
 ---
 
 ## 📞 Contact
