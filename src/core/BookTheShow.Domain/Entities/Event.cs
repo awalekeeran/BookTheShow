@@ -1,3 +1,5 @@
+using BookTheShow.Domain.Enums;
+
 namespace BookTheShow.Domain.Entities;
 
 public class Event : BaseEntity
@@ -278,27 +280,4 @@ public class Event : BaseEntity
         if (TotalSeats == 0) return 0;
         return (int)Math.Round((double)BookedSeats / TotalSeats * 100);
     }
-}
-
-public enum EventStatus
-{
-    Draft = 1,      // Event created but not published
-    Live = 2,       // Event published and accepting bookings
-    Cancelled = 3,  // Event cancelled
-    Completed = 4   // Event finished
-}
-
-public enum EventCategory
-{
-    Concert = 1,
-    Sports = 2,
-    Theater = 3,
-    Comedy = 4,
-    Conference = 5,
-    Workshop = 6,
-    Festival = 7,
-    Exhibition = 8,
-    Dance = 9,
-    Movie = 10,
-    Other = 99
 }
