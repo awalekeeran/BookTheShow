@@ -6,10 +6,7 @@ public class Event : BaseEntity
 {
     public string Title { get; private set; } = string.Empty;
     public string Description { get; private set; } = string.Empty;
-    public string Venue { get; private set; } = string.Empty;
-    public string Address { get; private set; } = string.Empty;
-    public string City { get; private set; } = string.Empty;
-    public string Country { get; private set; } = string.Empty;
+    public Guid VenueId { get; private set; }
     public DateTime StartDateTime { get; private set; }
     public DateTime EndDateTime { get; private set; }
     public EventStatus Status { get; private set; }
@@ -28,6 +25,15 @@ public class Event : BaseEntity
     public bool AllowWaitlist { get; private set; }
     public int MaxSeatsPerBooking { get; private set; }
 
+    // Navigation properties
+    public Venue Venue { get; private set; } = null!;
+
+    private readonly List<Booking> _bookings = new();
+    public IReadOnlyCollection<Booking> Bookings => _bookings.AsReadOnly();
+
+    private readonly List<SeatReservation> _seatReservations = new();
+    public IReadOnlyCollection<SeatReservation> SeatReservations => _seatReservations.AsReadOnly();
+
     // Private constructor for EF Core
     private Event() { }
 
@@ -35,10 +41,7 @@ public class Event : BaseEntity
     public static Event Create(
         string title,
         string description,
-        string venue,
-        string address,
-        string city,
-        string country,
+        Guid venueId,
         DateTime startDateTime,
         DateTime endDateTime,
         EventCategory category,
@@ -54,11 +57,8 @@ public class Event : BaseEntity
         if (string.IsNullOrWhiteSpace(title))
             throw new ArgumentException("Event title is required", nameof(title));
 
-        if (string.IsNullOrWhiteSpace(venue))
-            throw new ArgumentException("Venue is required", nameof(venue));
-
-        if (string.IsNullOrWhiteSpace(city))
-            throw new ArgumentException("City is required", nameof(city));
+        if (venueId == Guid.Empty)
+            throw new ArgumentException("Valid venue ID is required", nameof(venueId));
 
         if (startDateTime <= DateTime.UtcNow.AddHours(1))
             throw new ArgumentException("Event start time must be at least 1 hour in the future", nameof(startDateTime));
@@ -83,10 +83,7 @@ public class Event : BaseEntity
             Id = Guid.NewGuid(),
             Title = title,
             Description = description ?? string.Empty,
-            Venue = venue,
-            Address = address ?? string.Empty,
-            City = city,
-            Country = country ?? "Unknown",
+            VenueId = venueId,
             StartDateTime = startDateTime,
             EndDateTime = endDateTime,
             Status = EventStatus.Draft,
@@ -113,10 +110,6 @@ public class Event : BaseEntity
     public void UpdateDetails(
         string title,
         string description,
-        string venue,
-        string address,
-        string city,
-        string country,
         EventCategory category,
         string imageUrl = "")
     {
@@ -128,10 +121,6 @@ public class Event : BaseEntity
 
         Title = title;
         Description = description ?? string.Empty;
-        Venue = venue;
-        Address = address ?? string.Empty;
-        City = city;
-        Country = country ?? "Unknown";
         Category = category;
         ImageUrl = imageUrl ?? string.Empty;
         UpdatedAt = DateTime.UtcNow;
@@ -170,7 +159,7 @@ public class Event : BaseEntity
         if (Status != EventStatus.Draft)
             throw new InvalidOperationException("Only draft events can be published");
 
-        if (string.IsNullOrWhiteSpace(Title) || string.IsNullOrWhiteSpace(Venue))
+        if (string.IsNullOrWhiteSpace(Title) || VenueId == Guid.Empty)
             throw new InvalidOperationException("Event must have title and venue before publishing");
 
         Status = EventStatus.Live;
@@ -279,5 +268,83 @@ public class Event : BaseEntity
     {
         if (TotalSeats == 0) return 0;
         return (int)Math.Round((double)BookedSeats / TotalSeats * 100);
+    }
+
+    // Seat Management Methods
+    public List<Seat> GetAvailableSeats()
+    {
+        return Venue?.GetAvailableSeats(Id).ToList() ?? new List<Seat>();
+    }
+
+    public bool CanReserveSeats(List<Guid> seatIds)
+    {
+        if (Status != EventStatus.Live)
+            return false;
+
+        if (!IsBookingOpen())
+            return false;
+
+        var availableSeats = GetAvailableSeats();
+        return seatIds.All(seatId => availableSeats.Any(s => s.Id == seatId));
+    }
+
+    public List<SeatReservation> ReserveSeats(List<Guid> seatIds, Guid userId, int reservationTimeoutMinutes = 15)
+    {
+        if (!CanReserveSeats(seatIds))
+            throw new InvalidOperationException("Cannot reserve requested seats");
+
+        if (seatIds.Count > MaxSeatsPerBooking)
+            throw new InvalidOperationException($"Cannot reserve more than {MaxSeatsPerBooking} seats per booking");
+
+        var reservations = new List<SeatReservation>();
+        var availableSeats = GetAvailableSeats();
+
+        foreach (var seatId in seatIds)
+        {
+            var seat = availableSeats.FirstOrDefault(s => s.Id == seatId);
+            if (seat == null)
+                throw new InvalidOperationException($"Seat {seatId} is not available");
+
+            // Calculate dynamic pricing
+            var seatPrice = BasePrice * seat.PricingTier;
+            
+            var reservation = SeatReservation.Create(
+                seatId, Id, userId, seatPrice, reservationTimeoutMinutes);
+            
+            reservations.Add(reservation);
+        }
+
+        // Update available seats count
+        AvailableSeats -= reservations.Count;
+        UpdatedAt = DateTime.UtcNow;
+
+        return reservations;
+    }
+
+    public void ConfirmBooking(Booking booking)
+    {
+        if (booking.EventId != Id)
+            throw new InvalidOperationException("Booking does not belong to this event");
+
+        BookedSeats += booking.GetSeatCount();
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void ReleaseSeatReservations(List<SeatReservation> reservations)
+    {
+        var eventReservations = reservations.Where(r => r.EventId == Id).ToList();
+        AvailableSeats += eventReservations.Count;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public decimal CalculateSeatPrice(Seat seat)
+    {
+        return BasePrice * seat.PricingTier;
+    }
+
+    public bool IsHighDemandEvent()
+    {
+        // High demand if more than 80% booked
+        return (double)BookedSeats / TotalSeats > 0.8;
     }
 }
