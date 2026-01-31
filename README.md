@@ -37,7 +37,6 @@ This project tackles those **exact challenges** while teaching you:
 - [System Design Concepts](#-system-design-concepts)
 - [Documentation](#-documentation)
 - [Getting Started](#-getting-started)
-- [Milestones](#-milestones)
 
 ---
 
