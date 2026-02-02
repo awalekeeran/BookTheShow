@@ -34,7 +34,7 @@ try
 
     // Add DbContext
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseSqlServer(
+        options.UseNpgsql(
             builder.Configuration.GetConnectionString("DefaultConnection"),
             b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
