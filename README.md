@@ -87,8 +87,6 @@ This project tackles those **exact challenges** while teaching you:
 | **Single Point of Failure** | Event-driven architecture |
 | **Bot Traffic** | Rate limiting + Token bucket algorithm |
 
-📖 **Deep Dive**: [High-Volume System Design](docs/architecture/high-volume-system-design.md)
-
 ---
 
 ## 🏗️ Architecture
