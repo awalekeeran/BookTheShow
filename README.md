@@ -44,10 +44,10 @@ This project tackles those **exact challenges** while teaching you:
 
 **BookTheShow** is a ticket booking platform combining:
 
-| Feature | Learning Focus |
-|---------|---------------|
-| **Movie Booking** (BookMyShow style) | CRUD, Search, Basic Architecture |
-| **Event/Concert Booking** (Ticketmaster style) | High-volume, Concurrency, Scaling |
+|                 Feature                        |                 Learning Focus              |
+|------------------------------------------------|---------------------------------------------|
+| **Movie Booking** (BookMyShow style)           | CRUD, Search, Basic Architecture            |
+| **Event/Concert Booking** (Ticketmaster style) | High-volume, Concurrency, Scaling           |
 
 ### What You'll Learn
 
