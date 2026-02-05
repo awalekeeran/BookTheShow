@@ -1,4 +1,4 @@
-# BookTheShow 🎬🎭
+# BookTheShow
 
 > A comprehensive movie & event ticket booking platform built for learning **System Design**, **OOAD**, and **Design Patterns** — inspired by **BookMyShow** and the **Ticketmaster** case study.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 🔥 Why This Project?
+## Why This Project?
 
 Remember when **Ticketmaster crashed** during Taylor Swift's Eras Tour presale?
 - 14+ million users tried to access simultaneously
@@ -25,7 +25,7 @@ This project tackles those **exact challenges** while teaching you:
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Project Overview](#-project-overview)
 - [The Ticketmaster Problem](#-the-ticketmaster-problem)
@@ -40,7 +40,7 @@ This project tackles those **exact challenges** while teaching you:
 
 ---
 
-## 🎯 Project Overview
+## Project Overview
 
 **BookTheShow** is a ticket booking platform combining:
 
@@ -61,7 +61,7 @@ This project tackles those **exact challenges** while teaching you:
 
 ---
 
-## 💥 The Ticketmaster Problem
+## The Ticketmaster Problem
 
 ### What Happened (Nov 2022)
 
@@ -71,25 +71,25 @@ This project tackles those **exact challenges** while teaching you:
 ├─────────────────────────────────────────────────────────────┤
 │  Expected Users:     1.5 million                            │
 │  Actual Users:       14+ million                            │
-│  Result:             SYSTEM CRASHED 💥                      │
+│  Result:             SYSTEM CRASHED                         │
 │  Outcome:            Congressional hearings, lawsuits       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ### Technical Problems We'll Solve
 
-| Problem | Our Solution |
-|---------|-------------|
-| **Thundering Herd** | Virtual Waiting Room with Redis Sorted Sets |
-| **Double Booking** | Distributed Locking (Redlock algorithm) |
-| **Database Bottleneck** | Read Replicas + Redis Caching |
-| **No Auto-Scaling** | Container orchestration patterns |
-| **Single Point of Failure** | Event-driven architecture |
-| **Bot Traffic** | Rate limiting + Token bucket algorithm |
+|         Problem             |         Our Solution                        |
+|-----------------------------|---------------------------------------------|
+| **Thundering Herd**         | Virtual Waiting Room with Redis Sorted Sets |
+| **Double Booking**          | Distributed Locking (Redlock algorithm)     |
+| **Database Bottleneck**     | Read Replicas + Redis Caching               |
+| **No Auto-Scaling**         | Container orchestration patterns            |
+| **Single Point of Failure** | Event-driven architecture                   |
+| **Bot Traffic**             | Rate limiting + Token bucket algorithm      |
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### High-Level Architecture
 
@@ -153,7 +153,7 @@ This project tackles those **exact challenges** while teaching you:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Backend
 | Technology | Purpose |
@@ -191,7 +191,7 @@ This project tackles those **exact challenges** while teaching you:
 
 ---
 
-## 📚 Learning Roadmap
+## Learning Roadmap
 
 ### Phase 1: Foundation (Weeks 1-4)
 **Goal**: Build a working monolith with clean architecture
@@ -203,7 +203,7 @@ This project tackles those **exact challenges** while teaching you:
 - [ ] Dependency Injection
 - [ ] JWT Authentication
 
-**📺 Videos**: Introduction, Project Setup, Clean Architecture
+** Videos**: Introduction, Project Setup, Clean Architecture
 
 ### Phase 2: Design Patterns (Weeks 5-8)
 **Goal**: Implement core booking features with design patterns
@@ -215,7 +215,7 @@ This project tackles those **exact challenges** while teaching you:
 - [ ] State Pattern (Booking lifecycle)
 - [ ] Decorator Pattern (Price add-ons)
 
-**📺 Videos**: One video per pattern with real implementation
+** Videos**: One video per pattern with real implementation
 
 ### Phase 3: Advanced Patterns (Weeks 9-12)
 **Goal**: Add booking flow with concurrency handling
@@ -227,7 +227,7 @@ This project tackles those **exact challenges** while teaching you:
 - [ ] Command Pattern (Booking operations)
 - [ ] Adapter Pattern (Payment gateways)
 
-**📺 Videos**: Complex pattern implementations
+** Videos**: Complex pattern implementations
 
 ### Phase 4: System Design (Weeks 13-16)
 **Goal**: Handle high-volume scenarios
@@ -239,7 +239,7 @@ This project tackles those **exact challenges** while teaching you:
 - [ ] Virtual Waiting Room
 - [ ] Rate Limiting
 
-**📺 Videos**: Ticketmaster case study solutions
+** Videos**: Ticketmaster case study solutions
 
 ### Phase 5: Real-Time & Scale (Weeks 17-20)
 **Goal**: Real-time features and optimization
@@ -251,11 +251,11 @@ This project tackles those **exact challenges** while teaching you:
 - [ ] Database optimization
 - [ ] Performance tuning
 
-**📺 Videos**: Scaling and optimization techniques
+** Videos**: Scaling and optimization techniques
 
 ---
 
-## 🎬 Features & Scenarios
+##  Features & Scenarios
 
 ### User Flow
 
@@ -266,7 +266,7 @@ This project tackles those **exact challenges** while teaching you:
 │                                                                           │
 │  1. SEARCH          2. SELECT           3. SEATS           4. PAY        │
 │  ┌─────────┐       ┌─────────┐         ┌─────────┐       ┌─────────┐    │
-│  │ 🔍 Find │──────►│ 🎬 Pick │────────►│ 💺 Book │──────►│ 💳 Pay  │    │
+│  │ 🔍Find  │─ ────►│ 🎬 Pick │────────►│ 💺 Book │──────►│ 💳 Pay  │    │
 │  │ Movie   │       │ Show    │         │ Seats   │       │         │    │
 │  └─────────┘       └─────────┘         └─────────┘       └─────────┘    │
 │       │                 │                   │                 │          │
@@ -294,7 +294,7 @@ This project tackles those **exact challenges** while teaching you:
 
 ---
 
-## 🎨 Design Patterns Used
+##  Design Patterns Used
 
 ### Creational Patterns
 | Pattern | Use Case | Learning Value |
@@ -322,11 +322,11 @@ This project tackles those **exact challenges** while teaching you:
 | **Chain of Responsibility** | Validation pipeline | Request handling |
 | **Template Method** | Payment processing | Algorithm skeleton |
 
-📖 **Deep Dive**: [Design Patterns Roadmap](docs/patterns/design-patterns-roadmap.md)
+ **Deep Dive**: [Design Patterns Roadmap](docs/patterns/design-patterns-roadmap.md)
 
 ---
 
-## 🏛️ System Design Concepts
+##  System Design Concepts
 
 ### Concurrency Handling
 
@@ -367,20 +367,20 @@ This project tackles those **exact challenges** while teaching you:
 
 ---
 
-## 📖 Documentation
+##  Documentation
 
 | Document | Description |
 |----------|-------------|
-| [📐 System Design](docs/architecture/system-design.md) | Complete system architecture |
-| [🚀 High-Volume Design](docs/architecture/high-volume-system-design.md) | Ticketmaster-scale solutions |
-| [🎨 Design Patterns Roadmap](docs/patterns/design-patterns-roadmap.md) | Pattern-by-pattern learning |
-| [📋 OOAD Principles](docs/architecture/ooad-principles.md) | SOLID, DDD, Clean Architecture |
-| [🎯 GitHub Issues Setup](docs/project/GITHUB-ISSUES-SETUP.md) | Complete issue templates |
-| [📺 Content Creator Roadmap](docs/CONTENT-CREATOR-ROADMAP.md) | YouTube/Instagram guide |
+| [ System Design](docs/architecture/system-design.md) | Complete system architecture |
+| [ High-Volume Design](docs/architecture/high-volume-system-design.md) | Ticketmaster-scale solutions |
+| [ Design Patterns Roadmap](docs/patterns/design-patterns-roadmap.md) | Pattern-by-pattern learning |
+| [ OOAD Principles](docs/architecture/ooad-principles.md) | SOLID, DDD, Clean Architecture |
+| [ GitHub Issues Setup](docs/project/GITHUB-ISSUES-SETUP.md) | Complete issue templates |
+| [ Content Creator Roadmap](docs/CONTENT-CREATOR-ROADMAP.md) | YouTube/Instagram guide |
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -402,7 +402,7 @@ This is a **documentation-first** project. Current phase:
 
 ---
 
-## 🎯 Milestones
+##  Milestones
 
 | Milestone | Focus | Duration |
 |-----------|-------|----------|
