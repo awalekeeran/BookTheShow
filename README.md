@@ -95,7 +95,7 @@ This project tackles those **exact challenges** while teaching you:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                              CLIENT LAYER                                    │
+│                              CLIENT LAYER                                   │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐              │
 │  │   React Web     │  │   Mobile App    │  │   Admin Portal  │              │
 │  │   Application   │  │   (Future)      │  │   (React)       │              │
@@ -105,28 +105,28 @@ This project tackles those **exact challenges** while teaching you:
             └─────────────────────┼─────────────────────┘
                                   │
 ┌─────────────────────────────────┼───────────────────────────────────────────┐
-│                        WAITING ROOM LAYER (for high-demand events)           │
+│                        WAITING ROOM LAYER (for high-demand events)          │
 │  ┌──────────────────────────────┴──────────────────────────────────────┐    │
-│  │              Virtual Waiting Room (Redis Sorted Set)                 │    │
-│  │         • Queue Position • Fair Distribution • Bot Protection        │    │
+│  │              Virtual Waiting Room (Redis Sorted Set)                │    │
+│  │         • Queue Position • Fair Distribution • Bot Protection       │    │
 │  └──────────────────────────────┬──────────────────────────────────────┘    │
 └─────────────────────────────────┼───────────────────────────────────────────┘
                                   │
 ┌─────────────────────────────────┼───────────────────────────────────────────┐
-│                         API GATEWAY LAYER                                    │
+│                         API GATEWAY LAYER                                   │
 │  ┌──────────────────────────────┴──────────────────────────────────────┐    │
-│  │                        API Gateway (YARP)                            │    │
-│  │    • Rate Limiting • Authentication • Circuit Breaker • Routing      │    │
+│  │                        API Gateway (YARP)                           │    │
+│  │    • Rate Limiting • Authentication • Circuit Breaker • Routing     │    │
 │  └──────────────────────────────┬──────────────────────────────────────┘    │
 └─────────────────────────────────┼───────────────────────────────────────────┘
                                   │
 ┌─────────────────────────────────┼───────────────────────────────────────────┐
-│                           SERVICE LAYER                                      │
+│                           SERVICE LAYER                                     │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
 │  │   Identity  │  │   Catalog   │  │   Booking   │  │   Payment   │         │
 │  │   Service   │  │   Service   │  │   Service   │  │   Service   │         │
 │  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘         │
-│         │                │                │                │                 │
+│         │                │                │                │                │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
 │  │Notification │  │   Search    │  │  Inventory  │  │  Analytics  │         │
 │  │   Service   │  │   Service   │  │   Service   │  │   Service   │         │
@@ -134,22 +134,13 @@ This project tackles those **exact challenges** while teaching you:
 └─────────┼────────────────┼────────────────┼────────────────┼────────────────┘
           │                │                │                │
 ┌─────────┼────────────────┼────────────────┼────────────────┼────────────────┐
-│         │           DATA & MESSAGING LAYER                 │                 │
+│         │           DATA & MESSAGING LAYER                 │                │
 │  ┌──────┴──────┐  ┌─────────────┐  ┌─────────────┐  ┌──────┴──────┐         │
-│  │  SQL Server │  │    Redis    │  │ Elasticsearch│  │  RabbitMQ   │         │
+│  │  SQL Server │  │    Redis    │  │ Elasticsearch│ │  RabbitMQ   │         │
 │  │  (Primary)  │  │ (Cache+Lock)│  │  (Search)   │  │  (Events)   │         │
 │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘         │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
-
-### Evolutionary Architecture Phases
-
-| Phase | Architecture Style | Learning Focus |
-|-------|-------------------|----------------|
-| **Phase 1** | Monolith | SOLID, Clean Architecture, Repository Pattern |
-| **Phase 2** | Modular Monolith | Bounded Contexts, Domain Events |
-| **Phase 3** | Microservices | Service Communication, Event-Driven Architecture |
-| **Phase 4** | Distributed System | CQRS, Event Sourcing, Saga Pattern |
 
 ---
 
